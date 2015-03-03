@@ -1181,7 +1181,7 @@
                     description: '&',
                     tooltips: '@',
                     tooltipcontent: '&',
-                    valueFormat: '&',
+                    valueformat: '&',
 
                     callback: '&',
 
@@ -1234,7 +1234,6 @@
                                         .labelThreshold(attrs.labelthreshold === undefined ? 0.02 : attrs.labelthreshold)
                                         .labelType(attrs.labeltype === undefined ? 'key' : attrs.labeltype)
                                         .pieLabelsOutside(attrs.pielabelsoutside === undefined ? true : (attrs.pielabelsoutside === 'true'))
-                                        .valueFormat(attrs.valueformat === undefined ? d3.format(',.2f') : attrs.valueformat)
                                         .showLegend(attrs.showlegend === undefined ? false : (attrs.showlegend === 'true'))
                                         .description(attrs.description === undefined ?  function(d) { return d.description; } : scope.description())
                                         .color(attrs.color === undefined ? nv.utils.defaultColor()  : scope.color())
@@ -1244,6 +1243,10 @@
 
                                     if(attrs.tooltipcontent){
                                         chart.tooltipContent(scope.tooltipcontent());
+                                    }
+                                    
+                                    if ( attrs.valueformat ) {
+                                        chart.valueFormat(scope.valueformat());
                                     }
 
                                     scope.d3Call(data, chart);
